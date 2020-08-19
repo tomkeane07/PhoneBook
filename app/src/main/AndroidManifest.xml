@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.mainActivity"
+        <activity android:name=".main.ui.mainActivity"
             android:parentActivityName=".login.ui.LoginActivity">
 
         </activity>

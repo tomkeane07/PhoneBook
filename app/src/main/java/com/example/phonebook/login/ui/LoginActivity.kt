@@ -17,7 +17,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.phonebook.R
-import com.example.phonebook.main.mainActivity
+import com.example.phonebook.main.ui.mainActivity
 
 class LoginActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.phonebook.main
+package com.example.phonebook.main.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,4 +10,6 @@ class mainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+
 }

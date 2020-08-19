@@ -1,4 +1,7 @@
 package com.example.phonebook.main.ui.fragments
 
-class contactListFragment {
+import androidx.fragment.app.Fragment
+
+class contactListFragment : Fragment() {
+
 }
