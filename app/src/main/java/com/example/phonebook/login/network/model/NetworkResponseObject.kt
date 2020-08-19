@@ -1,4 +1,4 @@
-package com.example.phonebook.network.model
+package com.example.phonebook.login.network.model
 
 import com.squareup.moshi.JsonClass
 

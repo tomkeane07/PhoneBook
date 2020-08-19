@@ -1,4 +1,4 @@
-package com.example.phonebook.ui.login
+package com.example.phonebook.login.ui
 
 /**
  * User details post authentication that is exposed to the UI

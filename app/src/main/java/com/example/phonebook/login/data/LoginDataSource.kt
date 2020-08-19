@@ -1,8 +1,8 @@
-package com.example.phonebook.data.login
+package com.example.phonebook.login.data
 
-import com.example.phonebook.data.model.LoggedInUser
-import com.example.phonebook.network.AuthApi
-import com.example.phonebook.network.model.NetworkResponseObject
+import com.example.phonebook.login.data.model.LoggedInUser
+import com.example.phonebook.login.network.AuthApi
+import com.example.phonebook.login.network.model.NetworkResponseObject
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import android.util.Log
@@ -29,10 +29,14 @@ class LoginDataSource {
                 authResponse.data?.user?.id!!,
                 displayName
             )
-            return@runBlocking Result.Success(user)
+            return@runBlocking Result.Success(
+                user
+            )
         } catch (e: Throwable) {
             Log.d("ERROR", e.toString())
-            return@runBlocking Result.Error(IOException("Error logging in", e))
+            return@runBlocking Result.Error(
+                IOException("Error logging in", e)
+            )
         }
     }
 

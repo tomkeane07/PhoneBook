@@ -1,6 +1,6 @@
-package com.example.phonebook.network
+package com.example.phonebook.login.network
 
-import com.example.phonebook.network.model.NetworkResponseObject
+import com.example.phonebook.login.network.model.NetworkResponseObject
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

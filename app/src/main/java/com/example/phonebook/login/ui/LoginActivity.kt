@@ -1,6 +1,7 @@
-package com.example.phonebook.ui.login
+package com.example.phonebook.login.ui
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,6 +17,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.phonebook.R
+import com.example.phonebook.main.mainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -106,6 +108,8 @@ class LoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
+        //val login: Intent = Intent(this.applicationContext, mainActivity.class)
+
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
