@@ -108,7 +108,8 @@ class LoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
-        //val login: Intent = Intent(this.applicationContext, mainActivity.class)
+        val intent = Intent(this, mainActivity::class.java)
+        startActivity(intent)
 
     }
 
