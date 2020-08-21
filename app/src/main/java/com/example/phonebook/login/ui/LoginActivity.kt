@@ -102,15 +102,15 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
-        // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
-        val intent = Intent(this, mainActivity::class.java)
-        startActivity(intent)
-
+        val loginIntent = Intent(this, mainActivity::class.java)
+        loginIntent.putExtra("username", model.username)
+        loginIntent.putExtra("apiKey", model.password)
+        startActivity(loginIntent)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {

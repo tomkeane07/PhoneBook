@@ -2,7 +2,7 @@ package com.example.phonebook.login.network.model
 
 import com.squareup.moshi.JsonClass
 
-data class NetworkResponseObject(
+data class UserAuthenticationResponseObject(
     val status: Int?,
     val message: String? = "",
     val timestamp: Int?,

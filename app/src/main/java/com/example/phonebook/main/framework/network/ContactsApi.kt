@@ -1,6 +1,6 @@
-package com.example.phonebook.login.network
+package com.example.phonebook.main.framework.network
 
-import com.example.phonebook.login.network.model.UserAuthenticationResponseObject
+import com.example.phonebook.main.framework.network.model.UserContactsResponseObject
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -14,18 +14,17 @@ import okio.IOException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 
-interface AuthApiService {
-    @GET("users/{user_id}")
-    fun authenticateAsync(
-        @Path("user_id") user_id: String
-    ): Deferred<UserAuthenticationResponseObject>
+
+interface UserApiService {
+    @GET("contacts")
+    fun getContactsAsync(
+    ): Deferred<UserContactsResponseObject>
 }
 
-class AuthApi(username: String, password: String) {
-    val retrofitService: AuthApiService by lazy {
-        initRetrofit(username, password).create(AuthApiService::class.java)
+class UserApi(username: String, password: String) {
+    val retrofitService: UserApiService by lazy {
+        initRetrofit(username, password).create(UserApiService::class.java)
     }
 }
 

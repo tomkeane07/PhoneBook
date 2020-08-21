@@ -1,13 +1,12 @@
 package com.example.phonebook.login.ui
 
+import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
+import com.example.phonebook.R
 import com.example.phonebook.login.data.LoginRepository
 import com.example.phonebook.login.data.Result
-
-import com.example.phonebook.R
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -22,7 +21,14 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         val result = loginRepository.login(username, password)
 
         if (result is Result.Success) {
-            _loginResult.value = LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
+            _loginResult.value =
+                LoginResult(
+                    success = LoggedInUserView(
+                        displayName = result.data.displayName,
+                        username = username,
+                        password = password
+                    )
+                )
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }

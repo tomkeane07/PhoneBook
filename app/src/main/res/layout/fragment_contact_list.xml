@@ -4,15 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<!--        <variable
+        <variable
             name="viewModel"
-            type="com.example.themovieapp.ui.view.HomeViewModel" />-->
+            type="com.example.phonebook.main.ui.viewmodels.ContactListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.example.themovieapp.ui.activity.MainActivity">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contact_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:listData="@{viewModel.contactList}"
+            tools:listitem="@layout/contact_list_item" />
+
+<!--        <Button
+            android:id="@+id/load_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onLoadMoreMoviesClicked()}"
+            android:text="@string/load_more_movies"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:showOnlyWhenFull="@{viewModel.movieList}" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

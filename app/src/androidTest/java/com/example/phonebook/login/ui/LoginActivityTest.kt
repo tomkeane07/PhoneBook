@@ -1,6 +1,8 @@
 package com.example.phonebook.login.ui
 
+import android.content.Context
 import android.content.Intent
+import android.net.wifi.WifiManager
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.TypeTextAction
 import androidx.test.espresso.action.ViewActions.click
@@ -30,6 +32,8 @@ class LoginActivityTest {
     * */
     @get:Rule
     val activityRule = ActivityTestRule(LoginActivity::class.java)
+    val username = "5f396af9109070518efb43e0"
+    val password = "/R/HAR9Qi5wR5rnrJBBXT3DZDqE6hWpKfdqnra5lHxc="
 
     @Before
     @Throws(Exception::class)
@@ -46,16 +50,15 @@ class LoginActivityTest {
     @Test
     fun loginTest() {
         onView(withId(R.id.username))
-            .perform(TypeTextAction("5f396af9109070518efb43e0"))
+            .perform(TypeTextAction(username))
 
         onView(withId(R.id.password))
-            .perform(TypeTextAction("/R/HAR9Qi5wR5rnrJBBXT3DZDqE6hWpKfdqnra5lHxc="))
+            .perform(TypeTextAction(password))
             .perform(closeSoftKeyboard())
         Thread.sleep(250)
 
         onView(withId(R.id.login))
             .perform(click())
-        Thread.sleep(250)
 
         activityRule.launchActivity(Intent())
         intended(hasComponent(mainActivity::class.java.getName()))

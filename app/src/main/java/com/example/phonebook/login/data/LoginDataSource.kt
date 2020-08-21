@@ -2,7 +2,7 @@ package com.example.phonebook.login.data
 
 import com.example.phonebook.login.data.model.LoggedInUser
 import com.example.phonebook.login.network.AuthApi
-import com.example.phonebook.login.network.model.NetworkResponseObject
+import com.example.phonebook.login.network.model.UserAuthenticationResponseObject
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import android.util.Log
@@ -12,14 +12,11 @@ import android.util.Log
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> = runBlocking {
+    fun login(username: String, apiKey: String): Result<LoggedInUser> = runBlocking {
         try {
-            Log.d("IN LOGIN", "IN LOGIN")
-            // TODO: handle loggedInUser authentication
-            lateinit var authResponse: NetworkResponseObject
+            lateinit var authResponse: UserAuthenticationResponseObject
 
-            Log.d("IN LOGIN", "RUNBLOCKING")
-            authResponse = getAuthenticationResponse(username, password)
+            authResponse = getAuthenticationResponse(username, apiKey)
             Log.d("IN LOGIN", authResponse.message!!)
 
             Log.d("authentication", authResponse.status.toString())
@@ -43,7 +40,7 @@ class LoginDataSource {
     suspend fun getAuthenticationResponse(
         username: String,
         password: String
-    ): NetworkResponseObject {
+    ): UserAuthenticationResponseObject {
         return AuthApi(username, password)
             .retrofitService.authenticateAsync(username).await()
     }
