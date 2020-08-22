@@ -1,6 +1,9 @@
 package com.example.phonebook.main.framework.model
 
+import android.os.Parcelable
 import com.squareup.moshi.JsonClass
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 
 // result generated from /json
 
@@ -63,38 +66,40 @@ data class Company(
     val contacts_count: Int?
 )
 
+
 @JsonClass(generateAdapter = true)
+@Parcelize
 data class Contact(
-    val id: String?,
-    val first_name: String?,
-    val last_name: String?,
-    val job_title: String?,
-    val company_id: String?,
-    val company_name: String?,
-    val company_size: Int?,
-    val owner_id: String?,
-    val status: String?,
-    val status_id: String?,
-    val tags: List<String>?,
-    val starred: Boolean?,
-    val background: String?,
-    val lead_source_id: String?,
-    val pending_deal: Boolean?,
-    val total_pendings: Int?,
-    val total_deals_count: Int?,
-    val photo_url: String?,
-    val custom_fields: List<Any>?,
-    val address_list: List<Address_list>?,
-    val google_contacts_data: Any?,
-    val letter: String?,
-    val urls: List<Url>?,
-    val phones: List<Phone>?,
-    val emails: List<Email>?,
-    val sales_closed_for: List<Any>?,
-    val closed_sales: List<Any>?,
-    val created_at: String?,
-    val modified_at: String?
-)
+    val id: String? = "123",
+    val first_name: String? = "Enda",
+    val last_name: String? = "Henehan",
+    val job_title: String? = "Plumber",
+    val company_id: String? = "234",
+    val company_name: String? = "EH Plumbing",
+    val company_size: Int? = null,
+    val owner_id: String? = null,
+    val status: String? = null,
+    val status_id: String? = null,
+    val tags: List<String>? = null,
+    val starred: Boolean? = null,
+    val background: String? = null,
+    val lead_source_id: String? = null,
+    val pending_deal: Boolean? = null,
+    val total_pendings: Int? = null,
+    val total_deals_count: Int? = null,
+    val photo_url: String? = "https://cdn-static.onepagecrm.com/photos/joe_bloggs.png",
+    val custom_fields: @RawValue List<Any>? = null,
+    val address_list: @RawValue List<Address_list>? = null,
+    val google_contacts_data: @RawValue Any? = null,
+    val letter: String? = null,
+    val urls: @RawValue List<Url>? = null,
+    val phones: @RawValue List<Phone>? = null,
+    val emails: @RawValue List<Email>? = null,
+    val sales_closed_for: @RawValue List<Any>? = null,
+    val closed_sales: @RawValue List<Any>? = null,
+    val created_at: String? = null,
+    val modified_at: String? = null
+) : Parcelable
 
 @JsonClass(generateAdapter = true)
 data class ContactHolder(

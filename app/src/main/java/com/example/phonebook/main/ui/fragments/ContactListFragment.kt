@@ -9,8 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.example.phonebook.R
 import com.example.phonebook.databinding.FragmentContactListBinding
 import com.example.phonebook.main.framework.model.Contact
 import com.example.phonebook.main.ui.adapters.ContactClickListener
@@ -49,7 +48,11 @@ class ContactListFragment : Fragment() {
 
         binding.contactList.adapter =
             ContactListAdapter(ContactClickListener {
-                
+                findNavController().navigate(
+                    R.id.action_contactList_to_contactDetails,
+                    bundleOf("selectedContact" to it)
+                )
+                selectedMovie = it
             })
 
         return binding.root

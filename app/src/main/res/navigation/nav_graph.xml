@@ -11,7 +11,18 @@
         android:name="com.example.phonebook.main.ui.fragments.ContactListFragment"
         android:label="contact_list"
         tools:layout="@layout/fragment_contact_list">
-
+        <action
+            android:id="@+id/action_contactList_to_contactDetails"
+            app:destination="@id/contact_details" />
     </fragment>
 
+    <fragment
+        android:id="@+id/contact_details"
+        android:name="com.example.phonebook.main.ui.fragments.ContactDetailsFragment"
+        android:label="contact_details"
+        tools:layout="@layout/fragment_contact_details">
+        <argument
+            android:name="selectedContact"
+            app:argType="com.example.phonebook.main.framework.model.Contact" />
+    </fragment>
 </navigation>

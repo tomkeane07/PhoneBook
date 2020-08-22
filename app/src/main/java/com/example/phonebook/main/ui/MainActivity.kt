@@ -1,9 +1,11 @@
 package com.example.phonebook.main.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.phonebook.R
 import com.example.phonebook.databinding.ActivityMainBinding
@@ -13,21 +15,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
+
+
+        setupNavigation()
     }
 
     private fun setupNavigation() {
-        val navController = findNavController(R.id.nav_host_fragment)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment        // first find the nav controller
+        val navController = navHostFragment.navController
+
+        // then setup the action bar, tell it about the DrawerLayout
         setupActionBarWithNavController(navController, binding.drawerLayout)
     }
 
-/*    private fun getCredentials(savedInstanceState: Bundle?):  {
-        val newString: String?
-        newString = if (savedInstanceState == null) {
-            val extras = intent.extras
-            extras?.getString("STRING_I_NEED")
-        } else {
-            savedInstanceState.getSerializable("STRING_I_NEED") as String?
-        }
-    }*/
+    override fun onSupportNavigateUp() =
+        navigateUp(findNavController(R.id.nav_host_fragment), binding.drawerLayout)
 }
