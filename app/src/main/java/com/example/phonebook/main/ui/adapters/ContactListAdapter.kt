@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.phonebook.databinding.ContactListItemBinding
 import com.example.phonebook.main.framework.model.Contact
 
-class ContactListAdapter() :
+class ContactListAdapter(val clickListener: ContactClickListener) :
     ListAdapter<Contact, ContactListAdapter.ContactListViewHolder>(
         DiffCallback
     ) {
@@ -41,8 +41,8 @@ class ContactListAdapter() :
     ) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind( contact: Contact) {
-
+        fun bind(clickListener: ContactClickListener, contact: Contact) {
+            binding.clickListener = clickListener
             binding.contact = contact
             // This is important, because it forces the data binding to execute immediately,
             // which allows the RecyclerView to make the correct view size measurements
@@ -66,7 +66,7 @@ class ContactListAdapter() :
     ) {
 
         val contact = getItem(position)
-        holder.bind(contact)
+        holder.bind(clickListener, contact)
     }
 
     /**

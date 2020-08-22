@@ -12,12 +12,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.phonebook.databinding.FragmentContactListBinding
+import com.example.phonebook.main.framework.model.Contact
+import com.example.phonebook.main.ui.adapters.ContactClickListener
 import com.example.phonebook.main.ui.adapters.ContactListAdapter
 import com.example.phonebook.main.ui.viewmodels.ContactListViewModel
 import com.example.phonebook.main.ui.viewmodels.ContactListViewModelFactory
 
 class ContactListFragment : Fragment() {
 
+    lateinit var selectedMovie: Contact
     private lateinit var viewModel: ContactListViewModel
     private lateinit var username: String
     private lateinit var password: String
@@ -45,7 +48,9 @@ class ContactListFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.contactList.adapter =
-            ContactListAdapter()
+            ContactListAdapter(ContactClickListener {
+                
+            })
 
         return binding.root
     }

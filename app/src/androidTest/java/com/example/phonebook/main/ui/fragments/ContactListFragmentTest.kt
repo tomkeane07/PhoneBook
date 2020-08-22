@@ -23,16 +23,13 @@ class ContactListFragmentTest {
     val mainActivityRule = ActivityTestRule(MainActivity::class.java, false, false)
     lateinit var username: String
     lateinit var password: String
-    lateinit var intent : Intent
+    lateinit var intent: Intent
 
     @Before
     @Throws(Exception::class)
     fun setUp() {
-        username = loginActivityRule.activity.getCredentials().username
-        password = loginActivityRule.activity.getCredentials().apiKey
-        intent = Intent()
-        intent.putExtra("username", username)
-        intent.putExtra("password", password)
+        setupCredentials(loginActivityRule)
+        startMainActivity()
     }
 
     @After
@@ -42,11 +39,23 @@ class ContactListFragmentTest {
     }
 
     @Test
-    fun x() {
+    fun y() {
+
+    }
+
+    fun setupCredentials(loginActivity: ActivityTestRule<LoginActivity>) {
+        username = loginActivity.activity.getCredentials().username
+        password = loginActivityRule.activity.getCredentials().apiKey
+        intent = Intent()
+        intent.putExtra("username", username)
+        intent.putExtra("password", password)
+    }
+
+    fun startMainActivity() {
         runBlocking {
             mainActivityRule.launchActivity(intent)
-
         }
     }
+
 
 }

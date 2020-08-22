@@ -10,12 +10,16 @@
         <variable
             name="contact"
             type="com.example.phonebook.main.framework.model.Contact" />
+        <variable
+            name="clickListener"
+            type="com.example.phonebook.main.ui.adapters.ContactClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="100dp"
+        android:onClick="@{() -> clickListener.onClick(contact)}"
         tools:context="com.example.phonebook.main.ui.fragment.ContactListFragment">
 
 
