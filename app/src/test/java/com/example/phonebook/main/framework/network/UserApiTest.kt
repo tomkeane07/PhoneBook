@@ -1,18 +1,27 @@
 package com.example.phonebook.main.framework.network
 
+import androidx.test.rule.ActivityTestRule
+import com.example.phonebook.login.ui.LoginActivity
+import com.example.phonebook.main.ui.getCredentials
+import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
+import org.junit.Rule
 
 import org.junit.Test
 
 class UserApiTest {
-    val username = "5f396af9109070518efb43e0"
-    val apiKey = "/R/HAR9Qi5wR5rnrJBBXT3DZDqE6hWpKfdqnra5lHxc="
+
+    @get:Rule
+    val activityRule = ActivityTestRule(LoginActivity::class.java)
+    lateinit var username: String
+    lateinit var password: String
 
     @Before
     fun setUp() {
-
+        username = activityRule.activity.getCredentials().username
+        password = activityRule.activity.getCredentials().apiKey
     }
 
     @After
@@ -22,8 +31,8 @@ class UserApiTest {
     @Test
     fun getUserContactsTest() {
         runBlocking {
-            UserApi(username, apiKey).retrofitService.getContactsAsync().await()
+            val response = UserApi(username, password).retrofitService.getContactsAsync().await()
+            assertEquals(response.status, "ok")
         }
     }
-
 }

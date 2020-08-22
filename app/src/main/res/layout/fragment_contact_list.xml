@@ -31,16 +31,5 @@
             app:listData="@{viewModel.contactList}"
             tools:listitem="@layout/contact_list_item" />
 
-<!--        <Button
-            android:id="@+id/load_more_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.onLoadMoreMoviesClicked()}"
-            android:text="@string/load_more_movies"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:showOnlyWhenFull="@{viewModel.movieList}" />-->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

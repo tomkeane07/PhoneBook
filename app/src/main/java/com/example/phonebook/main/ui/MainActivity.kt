@@ -1,13 +1,14 @@
 package com.example.phonebook.main.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.phonebook.R
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.phonebook.R
 import com.example.phonebook.databinding.ActivityMainBinding
 
-class mainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,4 +20,14 @@ class mainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         setupActionBarWithNavController(navController, binding.drawerLayout)
     }
+
+/*    private fun getCredentials(savedInstanceState: Bundle?):  {
+        val newString: String?
+        newString = if (savedInstanceState == null) {
+            val extras = intent.extras
+            extras?.getString("STRING_I_NEED")
+        } else {
+            savedInstanceState.getSerializable("STRING_I_NEED") as String?
+        }
+    }*/
 }

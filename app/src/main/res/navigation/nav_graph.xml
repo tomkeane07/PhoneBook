@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/contact_list"
-        android:name="com.example.phonebook.main.ui.fragments.contactListFragment"
+        android:name="com.example.phonebook.main.ui.fragments.ContactListFragment"
         android:label="contact_list"
         tools:layout="@layout/fragment_contact_list">
 

@@ -1,4 +1,4 @@
-package com.example.phonebook.main.framework.network.model
+package com.example.phonebook.main.framework.model
 
 import com.squareup.moshi.JsonClass
 
@@ -19,7 +19,7 @@ data class UserContactsResponseObject(
 
 @JsonClass(generateAdapter = true)
 data class Data(
-    val contacts: List<Contacts>?,
+    val contacts: List<ContactHolder>?,
     val total_count: Int?,
     val page: Int?,
     val per_page: Int?,
@@ -97,7 +97,7 @@ data class Contact(
 )
 
 @JsonClass(generateAdapter = true)
-data class Contacts(
+data class ContactHolder(
     val contact: Contact?,
     val next_actions: List<Next_action>? = null,
     val next_action: Next_action? = null,

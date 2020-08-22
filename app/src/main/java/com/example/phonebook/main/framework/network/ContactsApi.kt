@@ -1,6 +1,6 @@
 package com.example.phonebook.main.framework.network
 
-import com.example.phonebook.main.framework.network.model.UserContactsResponseObject
+import com.example.phonebook.main.framework.model.UserContactsResponseObject
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

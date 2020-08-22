@@ -15,9 +15,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.annotation.VisibleForTesting
 
 import com.example.phonebook.R
-import com.example.phonebook.main.ui.mainActivity
+import com.example.phonebook.main.ui.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -107,14 +108,19 @@ class LoginActivity : AppCompatActivity() {
             "$welcome $displayName",
             Toast.LENGTH_LONG
         ).show()
-        val loginIntent = Intent(this, mainActivity::class.java)
-        loginIntent.putExtra("username", model.username)
-        loginIntent.putExtra("apiKey", model.password)
-        startActivity(loginIntent)
+        startMainActivity(model)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
         Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+    }
+
+    @VisibleForTesting
+    private fun startMainActivity(model: LoggedInUserView) {
+        val loginIntent = Intent(this, MainActivity::class.java)
+        loginIntent.putExtra("username", model.username)
+        loginIntent.putExtra("password", model.password)
+        startActivity(loginIntent)
     }
 }
 

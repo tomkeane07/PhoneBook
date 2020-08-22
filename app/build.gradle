@@ -15,6 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -22,10 +23,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
     }
 
-    dataBinding {
-        enabled = true
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 
@@ -55,9 +67,18 @@ dependencies {
     implementation "com.squareup.moshi:moshi:1.8.0"
     implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
 
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+
     //androidTest
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-    androidTestImplementation'com.android.support.test.espresso:espresso-contrib:3.2.0'
-    androidTestImplementation"com.android.support.test.espresso:espresso-intents:3.2.0"
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.2.0'
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:3.2.0"
+
+    //test
+    testImplementation 'androidx.test:rules:1.2.0'
 }
