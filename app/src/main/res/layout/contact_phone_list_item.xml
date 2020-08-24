@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="100dp"
-        tools:context="com.example.phonebook.main.ui.fragment.ContactDetailsFragment">
+        tools:context="com.example.phonebook.main.ui.fragments.ContactDetailsFragment">
 
         <TextView
             android:id="@+id/phone_type"

@@ -11,6 +11,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.phonebook.R
 import com.example.phonebook.main.framework.model.Contact
+import com.example.phonebook.main.framework.model.Phone
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -18,7 +19,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class ContactDetailsFragmentTest {
-    val contact = Contact()
+
     val contactFullName = contact.first_name + " " + contact.last_name
     lateinit var scenario: FragmentScenario<ContactDetailsFragment>
 
@@ -28,7 +29,7 @@ class ContactDetailsFragmentTest {
     }
 
     @Test
-    fun q() {
+    fun detailsTest() {
         onView(withId(R.id.contact_name))
             .check(matches(withText(contactFullName)))
     }
@@ -45,3 +46,15 @@ class ContactDetailsFragmentTest {
 
     }
 }
+
+val contact = Contact(
+    first_name = "Enda",
+    last_name = "Henehan",
+    job_title = "plumber",
+    company_name = "EH Plumbing Ltd",
+    phones = listOf(
+        Phone("work", "087123456"),
+        Phone("mobile", "12345678")
+    ),
+    photo_url = "https://cdn-static.onepagecrm.com/photos/joe_bloggs.png"
+)

@@ -70,12 +70,12 @@ data class Company(
 @JsonClass(generateAdapter = true)
 @Parcelize
 data class Contact(
-    val id: String? = "123",
-    val first_name: String? = "Enda",
-    val last_name: String? = "Henehan",
-    val job_title: String? = "Plumber",
-    val company_id: String? = "234",
-    val company_name: String? = "EH Plumbing",
+    val id: String? = "",
+    val first_name: String? = "",
+    val last_name: String? = "",
+    val job_title: String? = "",
+    val company_id: String? = "",
+    val company_name: String? = "",
     val company_size: Int? = null,
     val owner_id: String? = null,
     val status: String? = null,
@@ -87,7 +87,7 @@ data class Contact(
     val pending_deal: Boolean? = null,
     val total_pendings: Int? = null,
     val total_deals_count: Int? = null,
-    val photo_url: String? = "https://cdn-static.onepagecrm.com/photos/joe_bloggs.png",
+    val photo_url: String? = "",
     val custom_fields: @RawValue List<Any>? = null,
     val address_list: @RawValue List<Address_list>? = null,
     val google_contacts_data: @RawValue Any? = null,
@@ -128,7 +128,7 @@ data class Next_action(
 )
 
 @JsonClass(generateAdapter = true)
-data class Phone(val type: String?, val value: String?)
+data class Phone(val type: String? = "", val value: String? = "")
 
 @JsonClass(generateAdapter = true)
 data class Url(val type: String?, val value: String?)
