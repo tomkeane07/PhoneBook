@@ -31,5 +31,15 @@
             app:listData="@{viewModel.contactList}"
             tools:listitem="@layout/contact_list_item" />
 
+        <Button
+            android:id="@+id/load_more_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onLoadMoreContactsClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/load_more_contacts"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

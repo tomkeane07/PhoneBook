@@ -11,6 +11,7 @@ import org.junit.Rule
 
 import org.junit.Test
 
+
 class UserApiTest {
 
     @get:Rule
@@ -26,12 +27,13 @@ class UserApiTest {
 
     @After
     fun tearDown() {
+        activityRule.finishActivity()
     }
 
     @Test
     fun getUserContactsTest() {
         runBlocking {
-            val response = UserApi(username, password).retrofitService.getContactsAsync().await()
+            val response = UserApi(username, password).retrofitService.getContactsAsync(1).await()
             assertEquals(response.status, "ok")
         }
     }

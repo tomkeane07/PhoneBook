@@ -14,11 +14,15 @@ import okio.IOException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 
 interface UserApiService {
     @GET("contacts")
     fun getContactsAsync(
+        @Query("page") page: Int,
+        @Query("per_page") per_page: Int = 10,
+        @Query("team") team: Boolean = false
     ): Deferred<UserContactsResponseObject>
 }
 

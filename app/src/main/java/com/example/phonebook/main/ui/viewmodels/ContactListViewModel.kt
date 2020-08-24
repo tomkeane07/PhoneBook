@@ -1,8 +1,6 @@
 package com.example.phonebook.main.ui.viewmodels
 
 import android.app.Application
-import android.util.Log
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,33 +19,47 @@ class ContactListViewModel(
     val contactList: LiveData<List<Contact>>
         get() = _contactList
 
+    var pageCounter = 2
+
     init {
-        getContacts()
+        addContactsFromApitoList(1)
     }
 
-    @VisibleForTesting
-    private fun getContacts() = runBlocking {
+    private fun addContactsFromApitoList(page: Int) = runBlocking {
         val userContactsResponseObject =
-            UserApi(username, password).retrofitService.getContactsAsync().await()
-        Log.d(
-            "getContactsStatus",
-            userContactsResponseObject.message.toString()
-        )
-        _contactList.value =
-            userContactsResponseObject.data?.contacts!!.getContacts()
+            UserApi(username, password).retrofitService
+                .getContactsAsync(page).await()
 
-        Log.d(
-            "contactList",
-            contactList.value.toString()
+        addContactToList(
+            userContactsResponseObject.data?.contacts!!.getContacts()
         )
+    }
+
+    fun addContactToList(contacts: List<Contact>) {
+        if (contactList.value.isNullOrEmpty())
+            _contactList.value = contacts
+        else
+            _contactList.value = _contactList.value?.plus(contacts)
     }
 
     fun List<ContactHolder>.getContacts(): List<Contact> {
         val contacts = ArrayList<Contact>()
-
         this.forEach() {
             contacts.add(it.contact!!)
         }
         return contacts
+    }
+
+    fun onLoadMoreContactsClicked() {
+        addContactsFromApitoList(pageCounter)
+        //fortesting
+        //for (id in 1..10) addfakeContactForTesting(id.toString())
+        pageCounter++
+    }
+
+    //fortesting
+    fun addfakeContactForTesting(id: String) {
+        val currentList = contactList.value
+        _contactList.value = currentList?.plus(Contact((id)))
     }
 }

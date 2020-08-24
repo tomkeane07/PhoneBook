@@ -16,4 +16,5 @@
     <!--    tests-->
     <string name="testUsername">5f396af9109070518efb43e0</string>
     <string name="testPassword">/R/HAR9Qi5wR5rnrJBBXT3DZDqE6hWpKfdqnra5lHxc=</string>
+    <string name="load_more_contacts">load more contacts</string>
 </resources>
