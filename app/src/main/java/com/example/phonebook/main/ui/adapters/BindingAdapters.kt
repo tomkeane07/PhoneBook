@@ -6,12 +6,18 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.phonebook.R
 import com.example.phonebook.main.framework.model.Contact
+import com.example.phonebook.main.framework.model.Phone
 
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Contact>?) {
     val adapter = recyclerView.adapter as ContactListAdapter
+    adapter.submitList(data)
+}
+
+@BindingAdapter("phone_numbers")
+fun bindPhonesRecyclerView(recyclerView: RecyclerView, data: List<Phone>?) {
+    val adapter = recyclerView.adapter as PhoneListAdapter
     adapter.submitList(data)
 }
 

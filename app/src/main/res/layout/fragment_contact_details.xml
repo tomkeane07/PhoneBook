@@ -33,22 +33,6 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/contact_company_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10sp"
-            android:gravity="center_horizontal"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/photo_url"
-            app:layout_constraintEnd_toStartOf="@+id/photo_url"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/photo_url"
-            app:layout_constraintVertical_bias="0.50"
-            app:text="@{viewModel.contact.company_name}"
-            tools:text="2019-09-02" />
-
-        <TextView
             android:id="@+id/contact_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -62,15 +46,51 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/photo_url"
-            tools:text="Seven Samurai" />
+            tools:text="enda Henehan" />
+
+        <TextView
+            android:id="@+id/contact_company_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contact_name"
+            app:text="@{viewModel.contact.company_name}"
+            tools:text="company_name" />
 
         <TextView
             android:id="@+id/contact_job_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@{viewModel.contact.job_title}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contact_name" />
+            app:layout_constraintTop_toBottomOf="@id/contact_company_name"
+            tools:text="job title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contact_phones"
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="5dp"
+            phone_numbers="@{viewModel.contact.phones}"
+            app:layout_constraintTop_toBottomOf="@id/contact_job_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:paddingStart="2dp"
+            tools:listitem="@layout/contact_phone_list_item" >
+        </androidx.recyclerview.widget.RecyclerView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

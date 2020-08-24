@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.phonebook.databinding.FragmentContactDetailsBinding
+import com.example.phonebook.main.ui.adapters.PhoneListAdapter
 import com.example.phonebook.main.ui.viewmodels.ContactDetailsViewModel
 import com.example.phonebook.main.ui.viewmodels.ContactDetailsViewModelFactory
 
@@ -33,6 +34,9 @@ class ContactDetailsFragment : Fragment() {
         ).get(ContactDetailsViewModel::class.java)
 
         binding.viewModel = viewModel
+
+        binding.contactPhones.adapter =
+            PhoneListAdapter()
 
         return binding.root
     }
