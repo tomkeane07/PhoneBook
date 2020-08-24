@@ -5,11 +5,11 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.example.phonebook.login.ui.LoginActivity
 import com.example.phonebook.main.ui.MainActivity
+import com.example.phonebook.main.ui.getCredentials
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import com.example.phonebook.main.ui.getCredentials
-import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -29,7 +29,6 @@ class ContactListFragmentTest {
     @Throws(Exception::class)
     fun setUp() {
         setupCredentials(loginActivityRule)
-        startMainActivity()
     }
 
     @After
@@ -39,7 +38,8 @@ class ContactListFragmentTest {
     }
 
     @Test
-    fun y() {
+    fun contactListTest() {
+        startMainActivity()
 
     }
 

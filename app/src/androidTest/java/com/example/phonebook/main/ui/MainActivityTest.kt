@@ -40,7 +40,7 @@ class MainActivityTest {
     }
 
     @Test
-    fun x() {
+    fun mainActivityTest() {
         runBlocking {
             mainActivityRule.launchActivity(intent)
         }
